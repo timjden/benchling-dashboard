@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <!--Use double curly braces so the Python formatted string does not think they are variables -->
+        <style>
+             
+            .wrapper {{                                 
+                display: grid;
+                grid-template-columns: 33% 33% 33%;
+                grid-template-rows: 100%;
+                margin: 0;
+                position: relative;
+                top: 50%;
+            }}
+
+            .block {{
+                border: 1px solid navy;
+                padding: 5px;
+                margin: 5px;
+                text-align: center;
+            }}
+
+        </style>
+    </head>
+    <body>
+        <div class = "wrapper">
+            <div class = "block">{Left}</div>
+            <div class = "block">{Middle}</div>
+            <div class = "block">{Right}</div>
+        </div>
+    </body>
+<html>

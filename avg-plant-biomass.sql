@@ -13,5 +13,5 @@ ORDER BY pb.file_registry_id$
 )
 
 --Select the average leaf biomass of all plant batches infiltrated less than 3 months ago
-SELECT ROUND(AVG(leaf_biomass_g)::numeric, 2) AS "Average Leaf Biomass per Plant (3 Months)"
+SELECT ROUND(AVG(leaf_biomass_g)::numeric, 2) AS "Avg Leaf Biomass per Plant (3 Months)"
 FROM biomass_per_pb
