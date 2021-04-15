@@ -24,5 +24,5 @@ GROUP BY week
 ORDER BY week
 )
 
-SELECT ROUND(AVG(mg_produced)::numeric, 2) AS "Avg Mg Protein Produced"
+SELECT ROUND(AVG(mg_produced)::numeric, 2) AS "Avg Mg Protein Produced/Week 3 Months"
 FROM mass_per_week
