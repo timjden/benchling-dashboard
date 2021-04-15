@@ -4,7 +4,7 @@
 WITH biomass_per_pb AS (
 SELECT  pb.file_registry_id$ AS pb_id, AVG(avg_plant_weight_g) AS leaf_biomass_g
 FROM plant_batches pb
-LEFT JOIN plant_measurements$raw pm ON pb.id = pm.plant_batch
+LEFT JOIN plant_measurements pm ON pb.id = pm.plant_batch
 LEFT JOIN infiltrations i ON pb.id = i.plant_lot
 WHERE avg_plant_weight_g IS NOT NULL
 AND (i.infiltrated_on >= (CURRENT_DATE - INTERVAL '3 months')) -- Specify that only pb's infiltrated less than 3 months ago should be listed
