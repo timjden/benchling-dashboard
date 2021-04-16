@@ -26,7 +26,7 @@ def run_query(sql_file):
     value = df.iloc[0,0]
     print(label[0])
     print(value)
-    return str(value) + "\n" + str(label[0])
+    return str(value) + "<br>" + str(label[0])
 
 html_template = open("critical-numbers-display.html").read()
 
