@@ -219,6 +219,7 @@ def get_dashboard ():
                 }
 
         </style>
+        <meta http-equiv="refresh" content="30">
         </head>
         <body>
             <img src='data:image/svg+xml;base64,""" + image + """'>
