@@ -230,7 +230,7 @@ def get_dashboard ():
 
     #Save HTML file
     fileName = date.strftime("%B-%Y")+ "-Dashboard"
-    with open("C:/Users/timjd/OneDrive - Cape Biologix Technologies (Pty) Ltd/Benchling Reports/Dashboards/" + fileName + ".html", "w") as file: #This is the file path to the Sharepoint folder (through OneDrive)
+    with open("C:/Users/timjd/OneDrive - Cape Biologix Technologies (Pty) Ltd/BenchlingReports/Dashboards/" + fileName + ".html", "w") as file: #This is the file path to the Sharepoint folder (through OneDrive)
         file.write(html)
 
     print("Dashboard Created!")
