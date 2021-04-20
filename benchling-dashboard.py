@@ -188,7 +188,7 @@ def get_dashboard ():
 
     #Subplot 5
     plt.subplot(rows, columns, 5)
-    bar_plot(yieldQuery, conn, 0, 100, 'Protein Batch', 'Yield (mg/kg)', False)
+    bar_plot(yieldQuery, conn, 0, 50, 'Protein Batch', 'Yield (mg/kg)', False)
 
     #Subplot 6
     plt.subplot(rows, columns, 6)
