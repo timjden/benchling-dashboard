@@ -211,18 +211,27 @@ def get_dashboard ():
         <head>
         <style>
 
-            img {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                height: 100%;
-                }
+            * {
+            margin: 0;
+            padding: 0;
+        }
+        .imgbox {
+            display: grid;
+            height: 100%;
+        }
+        .center-fit {
+            max-width: 100%;
+            max-height: 100vh;
+            margin: auto;
+        }
 
         </style>
-        <meta http-equiv="refresh" content="30">
+        <meta http-equiv="refresh" content="300">
         </head>
         <body>
-            <img src='data:image/svg+xml;base64,""" + image + """'>
+        <div class = "imgbox">
+            <img class = "center-fit" src='data:image/svg+xml;base64,""" + image + """'>
+        </div>
         </body>
     <html>
 
