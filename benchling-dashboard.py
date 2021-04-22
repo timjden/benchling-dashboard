@@ -130,7 +130,7 @@ def get_dashboard ():
     LEFT JOIN protein_batches pb ON cc.entity_id = pb.id
     LEFT JOIN box b ON b.id = e.box_id$
     LEFT JOIN location l ON b.location_id = l.id OR ft.location_id$ = l.id
-    WHERE (l.name = 'Antigen Stocks' OR l.name = 'Antibody Stocks')
+    WHERE (l.name = 'Antigen Stocks' OR l.name = 'Antibody Stocks') AND b.archived$ = 'false'
     GROUP BY "Name"
     ORDER BY "Name" DESC
 
@@ -246,6 +246,7 @@ def get_dashboard ():
 #Run
 get_dashboard()
 
+'''
 #Run again?
 answer = input("Run again? (Y/N)")
 while answer == 'Y':
@@ -253,6 +254,7 @@ while answer == 'Y':
     answer = input("Run again? (Y/N)")
 else:
     print("Goodbye")
+'''
 
 #Close connection
 conn.close()
