@@ -39,7 +39,7 @@ print(df)
 
 #SHAMELESSLY SMOOSHED TOGETHER FROM STACK OVERFLOW
 filename = "C:/Users/timjd/OneDrive - Cape Biologix Technologies (Pty) Ltd/1. Stock/Final Product Stock Sheet " + str(today.strftime("%Y-%b")) + ".xlsx"
-sheetname = str(today.strftime("%Y-%m-%d"))
+sheetname = str(today.strftime("%Y-%m-%d %H_%M%p"))
 with pd.ExcelWriter(filename) as writer:
     if not df.index.name:
         df.index.name = 'Index'
