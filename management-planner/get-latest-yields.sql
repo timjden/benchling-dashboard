@@ -17,7 +17,7 @@ WITH latest_run AS
               qc.date_time DESC)
 SELECT "name" as "Protein Name",
        SUBSTRING(date_time::text, 1, 10) as "Date",
-       mass as "Protein Mass (mg)",
-       leaf_weight "Leaf Mass (Kg)",
+       ROUND(mass::numeric, 2) as "Protein Mass (mg)",
+       ROUND(leaf_weight::numeric, 2) "Leaf Mass (Kg)",
        ROUND((mass/leaf_weight)::numeric, 2) as "Yield (mg/kg)"
 FROM latest_run
