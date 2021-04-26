@@ -7,6 +7,6 @@ LEFT JOIN eppendorf_tube$raw e ON e.id = cc.container_id
 LEFT JOIN falcon_tube$raw ft ON ft.id = cc.container_id
 LEFT JOIN protein_batches pb ON cc.entity_id = pb.id
 WHERE e.archived$ = 'true'
-       AND e.archive_purpose$ = 'Shipped'
+    AND e.archive_purpose$ = 'Shipped'
 GROUP BY pb.name,
          "Purpose"

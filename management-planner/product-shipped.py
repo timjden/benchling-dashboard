@@ -33,19 +33,20 @@ def run_query(sql_file):
     df = pd.DataFrame(get_data)
     return(df)
 
-df = run_query("get-leaf-stocks.sql")
+df = run_query("get-product-shipped.sql")
 print(df)
 
 #SHAMELESSLY SMOOSHED TOGETHER FROM STACK OVERFLOW
-filename = "C:/Users/timjd/OneDrive - Cape Biologix Technologies (Pty) Ltd/1. Stock/Frozen Leaf Stock " + str(today.strftime("%Y-%b")) + ".xlsx"
+filename = "C:/Users/timjd/OneDrive - Cape Biologix Technologies (Pty) Ltd/BenchlingReports/Other Data/Total Product Shipped (mg) " + str(today.strftime("%Y")) + ".xlsx"
 sheetname = str(today.strftime("%Y-%m-%d %H_%M%p"))
 with pd.ExcelWriter(filename) as writer:
     if not df.index.name:
         df.index.name = 'Index'
     df.to_excel(writer, sheet_name=sheetname, index=False)
     worksheet = writer.sheets[sheetname]
-    worksheet.set_column('A:A', 11, None)
-    worksheet.set_column('B:B', 7, None)
+    worksheet.set_column('A:A', 19, None)
+    worksheet.set_column('B:B', 14, None)
+    worksheet.set_column('C:C', 13, None)
 
 wb = openpyxl.load_workbook(filename = filename)
 tab = openpyxl.worksheet.table.Table(displayName="df", ref=f'A1:{chr(len(df.columns)+64)}{len(df)+1}')
