@@ -3,7 +3,7 @@ import pandas as pd
 import os
 from datetime import datetime
 import openpyxl
-from UliPlot.XLSX import auto_adjust_xlsx_column_width
+#from UliPlot.XLSX import auto_adjust_xlsx_column_width
 
 #Database info and credentials
 DB_NAME = 'warehouse'
