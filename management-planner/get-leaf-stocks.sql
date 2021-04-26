@@ -1,4 +1,4 @@
-SELECT l.protein_name as "Name",
+SELECT l.protein_name as "Product Name",
        SUM(lb.weight_g) as "Kg"
 FROM container_content cc
 JOIN leaf_box lb ON lb.id = cc.container_id
