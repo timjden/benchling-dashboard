@@ -22,7 +22,7 @@ while True:
         print("Error, retrying...")
 
 #Change out of the parent directory into the management-planner subfolder
-os.chdir("C:/Users/timjd/OneDrive/Documents/GitHub/github-upload/management-planner")
+os.chdir("C:/Users/timjd/Documents/GitHub/benchling-dashboard/management-planner")
 
 #Get date
 today = datetime.today()
