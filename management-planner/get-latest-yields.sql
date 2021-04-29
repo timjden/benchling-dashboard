@@ -6,12 +6,13 @@ WITH latest_run AS
                              ELSE qc.uv280_mgml*(qc.volume_ul/1000)
                          END) mass,
                         h.leaf_weight
-     FROM protein_batches pb
+     FROM protein_batches$raw pb
      LEFT JOIN jsonb_array_elements_text(pb.clarificate_batch) cla_id ON TRUE
      LEFT JOIN clarificates c ON cla_id = c.id
      LEFT JOIN homogenates h ON c.homogenate = h.id
      LEFT JOIN quality_control qc ON pb.id = qc.protein_batch
      WHERE pb.name IS NOT NULL
+         AND qc.quality_control_passfail != 'Fail'
          AND qc.date_time >= '2021-03-01'
      ORDER BY pb.name,
               qc.date_time DESC)
