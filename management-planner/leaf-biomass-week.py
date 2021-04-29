@@ -48,6 +48,7 @@ with pd.ExcelWriter(filename) as writer:
     worksheet.set_column('A:A', 11, None)
     worksheet.set_column('B:B', 26, None)
     worksheet.set_column('C:C', 31, None)
+    worksheet.set_column('D:D', 31, None)
     #auto_adjust_xlsx_column_width(df, writer, sheet_name=sheetname, margin=0)
     
 

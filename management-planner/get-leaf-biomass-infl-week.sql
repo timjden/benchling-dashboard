@@ -18,7 +18,8 @@ WITH leaf_mass AS
          ORDER BY i.file_registry_id$)
 SELECT "Week",
        SUM("No. Plants Infiltrated") AS "No. of Plants Infiltrated",
-       ROUND(SUM("Leaf Biomass Infiltrated (Kg)")::numeric, 2) AS "Leaf Biomass Infiltrated (Kg)"
+       ROUND(SUM("Leaf Biomass Infiltrated (Kg)")::numeric, 2) AS "Leaf Biomass Infiltrated (Kg)",
+       ROUND(((SUM("Leaf Biomass Infiltrated (Kg)"))/(SUM("No. Plants Infiltrated"))*1000)::numeric, 2) AS "Grams per Plant"
 FROM weeks
 GROUP BY "Week"
 ORDER BY "Week"
