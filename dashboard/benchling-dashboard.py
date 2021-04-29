@@ -51,7 +51,7 @@ def get_dashboard ():
     FROM protein_batches pb
     LEFT JOIN quality_control qc
     ON pb.id = qc.protein_batch
-    WHERE qc.date_time >= '""" + startRange + """' AND  qc.date_time <= '""" + endRange + """'
+    WHERE qc.date_time >= '""" + startRange + """' AND  qc.date_time <= '""" + endRange + """' AND pb.file_registry_id$ != 'PR-B114' AND pb.file_registry_id$ != 'PR-B116'
     ORDER BY pb.file_registry_id$
 
     """
@@ -113,7 +113,7 @@ def get_dashboard ():
     LEFT JOIN total_vol ON h.file_registry_id$ = total_vol.id
     LEFT JOIN quality_control qc ON pb.id = qc.protein_batch
     WHERE qc.date_time >= '""" + startRange + """'
-        AND qc.date_time <= '""" + endRange + """'
+        AND qc.date_time <= '""" + endRange + """' AND pb.file_registry_id$ != 'PR-B114' AND pb.file_registry_id$ != 'PR-B116'
     ORDER BY pb.file_registry_id$
 
     """
