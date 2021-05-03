@@ -1,12 +1,14 @@
-SELECT pb.name as "Product Name", --COALESCE(e.volume_si$*1000, ft.volume_si$*1000) as "Volume (ml)",
- --cc.concentration_si*1000 as "Concentration (mg/ml)",
- SUM(COALESCE((e.volume_si$*1000*cc.concentration_si*1000), (ft.volume_si$*1000*cc.concentration_si*1000))) as "Mass (mg)",
- COALESCE(e.archive_purpose$, ft.archive_purpose$) as "Purpose"
-FROM container_content cc
-LEFT JOIN eppendorf_tube$raw e ON e.id = cc.container_id
-LEFT JOIN falcon_tube$raw ft ON ft.id = cc.container_id
-LEFT JOIN protein_batches pb ON cc.entity_id = pb.id
-WHERE e.archived$ = 'true'
-       AND e.archive_purpose$ = 'Shipped'
-GROUP BY pb.name,
-         "Purpose"
+SELECT CONCAT(pb.file_registry_id$, ' ', pb.name) AS "ID",
+       (CASE
+            WHEN pb.name = 'S1-His' THEN COALESCE((qc.volume_ul/1000)*blitz_mgml, 0)
+            ELSE COALESCE((qc.volume_ul/1000)*uv280_mgml, 0)
+        END) AS "Mass (mg)"
+FROM protein_batches pb
+LEFT JOIN quality_control qc ON pb.id = qc.protein_batch
+WHERE qc.date_time >= '2021-05-01'
+       AND qc.date_time <= '2021-06-01'
+       AND pb.file_registry_id$ != 'PR-B114'
+       AND pb.file_registry_id$ != 'PR-B116'
+       AND (qc.quality_control_passfail != 'Fail'
+            OR qc.quality_control_passfail IS NULL)
+ORDER BY pb.file_registry_id$

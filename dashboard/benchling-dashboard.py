@@ -141,7 +141,9 @@ def get_dashboard ():
         SQL_Query = pd.read_sql_query(query, conn)
         df = pd.DataFrame(SQL_Query)
         print(df)
-
+        if df.empty:
+            print("No new data this month, yet...")
+            return
         #Define X and Y axes for barplot
         xaxis = df.iloc[:,0]
         yaxis = df.iloc[:,1]
