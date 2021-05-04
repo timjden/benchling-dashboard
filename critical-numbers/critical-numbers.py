@@ -1,5 +1,6 @@
 import psycopg2
 import pandas as pd
+import os
 
 #Database info and credentials
 DB_NAME = 'warehouse'
@@ -16,6 +17,9 @@ while True:
         break
     except:
         print("Error, retrying...")
+
+#Change out of the parent directory into the management-planner subfolder
+os.chdir("C:/Users/timjd/OneDrive/Documents/GitHub/github-upload/critical-numbers")
 
 def run_query(sql_file):
     query = open(sql_file).read()
