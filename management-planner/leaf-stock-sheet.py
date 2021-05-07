@@ -37,7 +37,7 @@ df = run_query("get-leaf-stocks.sql")
 print(df)
 
 #SHAMELESSLY SMOOSHED TOGETHER FROM STACK OVERFLOW
-filename = "C:/Users/timjd/OneDrive - Cape Biologix Technologies (Pty) Ltd/1. Stock/Frozen Leaf Stock " + str(today.strftime("%Y-%b")) + ".xlsx"
+filename = "C:/Users/timjd/OneDrive - Cape Biologix Technologies (Pty) Ltd/1. Stock/Live Frozen Leaf Stock " + str(today.strftime("%Y-%b")) + ".xlsx"
 sheetname = str(today.strftime("%Y-%m-%d %H_%M%p"))
 with pd.ExcelWriter(filename) as writer:
     if not df.index.name:
