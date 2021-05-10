@@ -9,7 +9,8 @@ WITH latest_run AS
      FROM protein_batches$raw pb
      LEFT JOIN jsonb_array_elements_text(pb.clarificate_batch) cla_id ON TRUE
      LEFT JOIN clarificates c ON cla_id = c.id
-     LEFT JOIN homogenates h ON c.homogenate = h.id
+     LEFT JOIN jsonb_array_elements_text(c.homogenate) hom_id ON TRUE
+     LEFT JOIN homogenates h ON hom_id = h.id
      LEFT JOIN quality_control qc ON pb.id = qc.protein_batch
      WHERE pb.name IS NOT NULL
          AND qc.quality_control_passfail != 'Fail'

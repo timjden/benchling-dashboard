@@ -99,7 +99,8 @@ def get_dashboard ():
             COUNT(h.file_registry_id$),
             SUM(c.homogenate_volume_l) as total_vol
     FROM clarificates c
-    LEFT JOIN homogenates h ON h.id = c.homogenate
+    LEFT JOIN jsonb_array_elements_text(c.homogenate) hom_id ON TRUE
+    LEFT JOIN homogenates h ON hom_id = h.id
     GROUP BY h.file_registry_id$
     ORDER BY h.file_registry_id$)
     SELECT CONCAT(pb.file_registry_id$, ' ', pb.name) AS "ID",
@@ -110,7 +111,8 @@ def get_dashboard ():
     FROM protein_batches pb
     LEFT JOIN jsonb_array_elements_text(pb.clarificate_batch) AS cla_id ON TRUE
     LEFT JOIN clarificates c ON cla_id = c.id
-    LEFT JOIN homogenates h ON c.homogenate = h.id
+    LEFT JOIN jsonb_array_elements_text(c.homogenate) hom_id ON TRUE
+    LEFT JOIN homogenates h ON hom_id = h.id
     LEFT JOIN total_vol ON h.file_registry_id$ = total_vol.id
     LEFT JOIN quality_control qc ON pb.id = qc.protein_batch
     WHERE qc.date_time >= '""" + startRange + """'
