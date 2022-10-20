@@ -7,8 +7,8 @@ import base64
 #Database info and credentials
 DB_NAME = 'warehouse'
 DB_HOST = 'postgres-warehouse.cbp.benchling.com'
-DB_USER = 'u$timdennis_au'
-DB_PASS = '8J4PKYTyAmNMIoLR'
+DB_USER = ''
+DB_PASS = ''
 
 #Database connection
 while True:
